@@ -1,0 +1,25 @@
+body {
+  color: #1b242d;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+a:hover {
+  color: #4f5e6d;
+}
+
+.batak {
+        cursor: pointer;
+    }
+    .batak path {
+        transition: fill 0.3s ease;
+    }
+    .batak:hover path {
+        fill: #fde401 !important;
+    }
