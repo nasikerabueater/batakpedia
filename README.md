@@ -4,6 +4,6 @@ Batakpedia is an interactive website that showcases everything about the Batak p
 Programs used:
 <div align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=vscode,html,css,js,svg,tailwind&perline=7&theme=dark" />
+    <img src="https://skillicons.dev/icons?i=html,css,js,svg,tailwind&perline=7&theme=dark" />
   </a>
 </div>
