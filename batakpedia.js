@@ -24,32 +24,70 @@ themeToggleBtn.addEventListener('click', () => {
     }
 });
 
-//map tooltip
-const tooltip = document.getElementById('svg-tooltip');
-const tooltipTitle = document.getElementById('tooltip-title');
+//menghubungkan map dan suku
+const wilayahBatak = document.querySelectorAll('.wilayah-batak');
+const cabangBatak = document.querySelectorAll('.cabang-batak');
 
-document.querySelectorAll('#peta-batak path').forEach(path => {
-    if (!path.hasAttribute('data-title')) return;
+function activateSimultaneous(regionId) {
+    if (!regionId) return;
 
-    path.addEventListener('mouseenter', (e) => {
-        const title = path.getAttribute('data-title');
-        tooltipTitle.textContent = title;
+    const matchingMap = document.querySelector(`.wilayah-batak[suku-batak="${regionId}"]`);
+    if (matchingMap) matchingMap.classList.add('is-active');
 
-        tooltip.classList.remove('opacity-0', 'scale-95');
-        tooltip.classList.add('opacity-100', 'scale-100');
+    const matchingCard = document.querySelector(`.cabang-batak[suku-batak="${regionId}"]`);
+    if (matchingCard) matchingCard.classList.add('is-active');
+}
+
+function deactivateAll() {
+    wilayahBatak.forEach(wilayah => wilayah.classList.remove('is-active'));
+    cabangBatak.forEach(cabang => cabang.classList.remove('is-active'));
+}
+
+wilayahBatak.forEach(wilayah => {
+    wilayah.addEventListener('mouseenter', () => {
+        const regionId = wilayah.getAttribute('suku-batak');
+        activateSimultaneous(regionId);
     });
+    wilayah.addEventListener('mouseleave', deactivateAll);
+});
 
-    path.addEventListener('mousemove', (e) => {
-        const offset = 15;
-
-        tooltip.style.left = `${e.pageX + offset}px`;
-        tooltip.style.top = `${e.pageY + offset}px`;
+cabangBatak.forEach(cabang => {
+    cabang.addEventListener('mouseenter', () => {
+        const regionId = cabang.getAttribute('suku-batak');
+        activateSimultaneous(regionId);
     });
-
-    path.addEventListener('mouseleave', () => {
-        tooltip.classList.remove('opacity-100', 'scale-100');
-        tooltip.classList.add('opacity-0', 'scale-95');
-    });
+    cabang.addEventListener('mouseleave', deactivateAll);
 });
 
 //ganti suku sesuai map
+const database = {
+    karo: {
+        title: "Karo | ᯂᯒᯨ",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+    },
+    alas: {
+        title: "Alas-Kluet",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+    },
+    toba: {
+        title: "Toba | ᯖᯬᯅ",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+    },
+    simalungun: {
+        title: "Simalungun | ᯙᯫᯕᯟᯮᯝᯯᯉ᯳",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+    },
+    pakpak: {
+        title: "Pakpak | ᯇᯂ᯲ᯇᯂ᯲",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+    },
+    angkola: {
+        title: "Angkola | ᯀᯰᯄ᯦ᯬᯞ",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+    },
+    mandailing: {
+        title: "Mandailing | ᯔᯉ᯲ᯑᯤᯞᯪᯰ",
+        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+};
+
