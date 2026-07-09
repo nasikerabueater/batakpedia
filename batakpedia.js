@@ -1,28 +1,107 @@
 //light mode and dark mode toggle
-const themeToggleBtn = document.getElementById('theme-toggle');
-const lightIcon = document.getElementById('theme-toggle-light-icon');
-const darkIcon = document.getElementById('theme-toggle-dark-icon');
+const themeToggleBtn = document.querySelectorAll('.theme-toggle');
 const htmlElement = document.documentElement;
 
 const enableDarkMode = () => {
     htmlElement.classList.add('dark');
-    darkIcon.classList.add('hidden');
-    lightIcon.classList.remove('hidden');
+
+    themeToggleBtn.forEach(btn => {
+        const lightIcon = btn.querySelector('.theme-toggle-light-icon');
+        const darkIcon = btn.querySelector('.theme-toggle-dark-icon');
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
+    });
 };
 
 const enableLightMode = () => {
     htmlElement.classList.remove('dark');
-    lightIcon.classList.add('hidden');
-    darkIcon.classList.remove('hidden');
+
+    themeToggleBtn.forEach(btn => {
+        const lightIcon = btn.querySelector('.theme-toggle-light-icon');
+        const darkIcon = btn.querySelector('.theme-toggle-dark-icon');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+    });
 };
 
-themeToggleBtn.addEventListener('click', () => {
-    if (htmlElement.classList.contains('dark')) {
+themeToggleBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (htmlElement.classList.contains('dark')) {
         enableLightMode();
     } else {
         enableDarkMode();
     }
+
+    if (typeof updateNavbarStyles === 'function') {
+        updateNavbarStyles();
+    }
+    });
 });
+
+//navbar
+const navbar = document.getElementById('navbar');
+const navMenu = document.getElementById('nav-menu');
+const logoLight = document.getElementById('logo-light');
+const logoDark = document.getElementById('logo-dark');
+const mobileNav = document.getElementById('mobile-nav');
+
+let lastScrollY = window.scrollY;
+
+function updateNavbarStyles(){
+    const currentScrollY = window.scrollY;
+    const isDark = htmlElement.classList.contains('dark');
+    const isMobileMenuOpen = !mobileNav.classList.contains('hidden');
+
+    if (currentScrollY > 50 || isMobileMenuOpen) {
+        navbar.classList.remove('bg-transparent', 'text-white');
+        navbar.classList.add('shadow-md', 'backdrop-blur-md', 'py-3');
+        navbar.classList.remove('py-4');
+
+        if (isDark) {
+            navbar.classList.add('bg-[#1b242d]', 'text-white');
+            navbar.classList.remove('bg-white', 'text-[#1b242d]');
+            logoLight.classList.remove('hidden');
+            logoDark.classList.add('hidden');
+
+        } else {
+            navbar.classList.remove('bg-[#1b242d]', 'text-white');
+            navbar.classList.add('bg-white', 'text-[#1b242d]');
+            logoLight.classList.add('hidden');
+            logoDark.classList.remove('hidden');
+        }
+    }
+}
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    updateNavbarStyles();
+
+    if (currentScrollY < 0) return;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        navbar.style.transform = 'translateY(0)';
+    }
+
+    lastScrollY = currentScrollY;
+});
+
+//navbar menu mobile mode
+const mobileBtn = document.getElementById('mobile-nav-btn');
+
+mobileBtn.addEventListener('click', () => {
+    const isHidden = mobileNav.classList.contains('hidden');
+    if (isHidden) {
+        mobileNav.classList.remove('hidden');
+        mobileNav.classList.add('flex');
+    } else {
+        mobileNav.classList.add('hidden');
+        mobileNav.classList.remove('flex');
+    }
+    updateNavbarStyles();
+})
 
 //menghubungkan map dan suku
 const wilayahBatak = document.querySelectorAll('.wilayah-batak');
