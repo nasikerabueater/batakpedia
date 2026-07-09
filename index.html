@@ -30,26 +30,28 @@
 
 <body class="font-['Open_Sans'] bg-white dark:bg-[#1b242d] dark:text-white transition-colors duration-200 ease-in-out">
     <header class="relative bg-white dark:bg-[#242a30] shadow-md z-10 transition-colors duration-200 ease-in-out">
-        <nav class="flex justify-between items-center lg:w-[80%] md:w-[90%] mx-auto py-4 px-8">
-            <div class="logo">
-                <a href="#"><img class="w-[200px] dark:hidden" src="img/logo-name-light.png" alt="Ruang Serumpun"></a>
-                <a href="#"><img class="w-[200px] hidden dark:block" src="img/logo-name-dark.png"
-                        alt="Ruang Serumpun"></a>
+        <nav id="navbar"
+            class="fixed top-0 left-0 w-full z-50 border-b border-transparent bg-transparent flex justify-between items-center mx-auto py-4 px-8 transition-all duration-300">
+            <div id="nav-logo">
+                <a href="#">
+                    <img id="logo-light" class="w-[200px]" src="img/logo-name-light.png" alt="Ruang Serumpun"></a>
+                <a href="#">
+                    <img id="logo-dark" class="w-[200px] hidden" src="img/logo-name-dark.png" alt="Ruang Serumpun"></a>
             </div>
-            <div>
-                <ul class="flex space-x-6 font-extrabold dark:text-white">
-                    <li><a class="dark:hover:text-[#fde401] duration-300 ease-in-out" href="#">Sejarah</a></li>
-                    <li><a class="dark:hover:text-[#fde401] duration-300 ease-in-out" href="#">Budaya</a></li>
-                    <li><a class="dark:hover:text-[#fde401] duration-300 ease-in-out" href="#">Bahasa</a></li>
+            <div id="nav-menu">
+                <ul class="hidden md:flex space-x-6 font-extrabold">
+                    <li><a class="hover:text-[#fde401] duration-300 ease-in-out" href="#">Sejarah</a></li>
+                    <li><a class="hover:text-[#fde401] duration-300 ease-in-out" href="#">Budaya</a></li>
+                    <li><a class="hover:text-[#fde401] duration-300 ease-in-out" href="#">Bahasa</a></li>
                     <li>
-                        <button id="theme-toggle">
-                            <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden icon-transition" fill="currentColor"
+                        <button class="theme-toggle hidden md:block focus:outline-none">
+                            <svg class="theme-toggle-light-icon w-5 h-5 hidden icon-transition" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="m 15.119183,9.8591481 c 0,2.7225799 -2.213759,4.9358609 -4.93531,4.9358609 -2.7223757,0 -4.93634,-2.214102 -4.93634,-4.9358609 0,-2.7219636 2.2143762,-4.9358608 4.93634,-4.9358608 2.721142,-7.36e-5 4.93531,2.2142388 4.93531,4.9358608 z m -4.93531,-6.8146437 c 0.272243,0 0.493442,-0.2213364 0.493442,-0.4936502 V 0.49365024 C 10.677315,0.22058609 10.456596,0 10.183873,0 9.9108084,0 9.6898136,0.22092771 9.6898136,0.49365024 V 2.5508542 c 0,0.2723138 0.220583,0.4936502 0.4940594,0.4936502 z m 4.912351,2.5089635 c 0.126352,0 0.2527,-0.04804 0.348779,-0.1444584 l 1.768561,-1.7681528 c 0.192842,-0.1935234 0.192842,-0.506358 0,-0.6987861 -0.192839,-0.1920896 -0.504715,-0.1920896 -0.697555,0 l -1.768562,1.7689703 c -0.192839,0.1932487 -0.192839,0.5054703 0,0.6979686 0.09642,0.096489 0.222358,0.1444584 0.348777,0.1444584 z M 4.1345036,5.4090765 c 0.096623,0.096009 0.2232489,0.1444584 0.3487769,0.1444584 0.1266261,0 0.2529744,-0.048037 0.3496004,-0.1444584 0.19284,-0.19284 0.19284,-0.5047166 0,-0.6979653 L 3.0635658,2.9421376 c -0.19284,-0.1920864 -0.5047168,-0.1920864 -0.6975567,0 -0.1928401,0.19284 -0.1928401,0.505333 0,0.6987893 z M 9.7897857,16.59808 c -0.2726522,0 -0.4932351,0.22154 -0.4932351,0.493646 v 2.057002 c 0,0.272448 0.2209246,0.493648 0.4932351,0.493648 0.2723133,0 0.4941973,-0.22072 0.4941973,-0.493648 v -2.05707 c 0,-0.272038 -0.221541,-0.493578 -0.4941973,-0.493578 z M 4.5278369,14.233712 2.7593423,16.002203 c -0.19284,0.192839 -0.19284,0.505537 0,0.697559 0.096626,0.09648 0.223249,0.144868 0.3495974,0.144868 0.126556,0 0.252154,-0.04798 0.34878,-0.144868 l 1.7685616,-1.768495 c 0.1928401,-0.192839 0.1928401,-0.505537 0,-0.697555 -0.1929071,-0.192433 -0.5056075,-0.192433 -0.6984444,0 z m 11.3110471,0 c -0.192841,-0.192433 -0.50513,-0.192433 -0.69797,0 -0.19284,0.192839 -0.19284,0.504716 0,0.697555 l 1.768562,1.768495 c 0.09635,0.09648 0.22277,0.144868 0.349531,0.144868 0.126418,0 0.252015,-0.04798 0.348439,-0.144868 0.192839,-0.192839 0.192839,-0.50472 0,-0.697559 z M 3.2089821,9.8591481 c 0,-0.2730643 -0.2220198,-0.4936474 -0.4942635,-0.4936474 H 0.49323831 C 0.2205829,9.3655007 0,9.5860838 0,9.8591481 0,10.132008 0.22092451,10.352795 0.49323831,10.352795 H 2.714789 c 0.2726523,-6.8e-5 0.4941931,-0.220787 0.4941931,-0.4936469 z M 19.497437,9.3655007 h -2.632718 c -0.272452,0 -0.493238,0.2205831 -0.493238,0.4936474 0,0.2728599 0.220719,0.4936469 0.493238,0.4936469 h 2.632718 c 0.272449,0 0.493648,-0.220721 0.493648,-0.4936469 0,-0.2731312 -0.221132,-0.4936474 -0.493648,-0.4936474 z"
                                     id="path1" style="stroke-width:0.0683343"></path>
                             </svg>
-                            <svg id="theme-toggle-dark-icon" class="w-5 h-5 icon-transition" fill="currentColor"
+                            <svg class="theme-toggle-dark-icon w-5 h-5 icon-transition" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                             </svg>
@@ -57,6 +59,36 @@
                     </li>
                 </ul>
             </div>
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="mobile-nav-btn" class="md:hidden p-1 focus:outline-none" aria-label="Toggle Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-menu">
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg>
+                </button>
+                <div id="mobile-nav"
+                    class="hidden absolute top-full left-0 w-full bg-white dark:bg-[#1b242d] dark:text-white border-b border-[#fde401] shadow-lg flex-col p-6 gap-4">
+                    <a class="hover:text-[#fde401] duration-300 ease-in-out" href="#">Sejarah</a>
+                    <a class="hover:text-[#fde401] duration-300 ease-in-out" href="#">Budaya</a>
+                    <a class="hover:text-[#fde401] duration-300 ease-in-out" href="#">Bahasa</a>
+                </div>
+                <button class="theme-toggle block md:hidden focus:outline-none">
+                    <svg class="theme-toggle-light-icon w-5 h-5 hidden icon-transition" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m 15.119183,9.8591481 c 0,2.7225799 -2.213759,4.9358609 -4.93531,4.9358609 -2.7223757,0 -4.93634,-2.214102 -4.93634,-4.9358609 0,-2.7219636 2.2143762,-4.9358608 4.93634,-4.9358608 2.721142,-7.36e-5 4.93531,2.2142388 4.93531,4.9358608 z m -4.93531,-6.8146437 c 0.272243,0 0.493442,-0.2213364 0.493442,-0.4936502 V 0.49365024 C 10.677315,0.22058609 10.456596,0 10.183873,0 9.9108084,0 9.6898136,0.22092771 9.6898136,0.49365024 V 2.5508542 c 0,0.2723138 0.220583,0.4936502 0.4940594,0.4936502 z m 4.912351,2.5089635 c 0.126352,0 0.2527,-0.04804 0.348779,-0.1444584 l 1.768561,-1.7681528 c 0.192842,-0.1935234 0.192842,-0.506358 0,-0.6987861 -0.192839,-0.1920896 -0.504715,-0.1920896 -0.697555,0 l -1.768562,1.7689703 c -0.192839,0.1932487 -0.192839,0.5054703 0,0.6979686 0.09642,0.096489 0.222358,0.1444584 0.348777,0.1444584 z M 4.1345036,5.4090765 c 0.096623,0.096009 0.2232489,0.1444584 0.3487769,0.1444584 0.1266261,0 0.2529744,-0.048037 0.3496004,-0.1444584 0.19284,-0.19284 0.19284,-0.5047166 0,-0.6979653 L 3.0635658,2.9421376 c -0.19284,-0.1920864 -0.5047168,-0.1920864 -0.6975567,0 -0.1928401,0.19284 -0.1928401,0.505333 0,0.6987893 z M 9.7897857,16.59808 c -0.2726522,0 -0.4932351,0.22154 -0.4932351,0.493646 v 2.057002 c 0,0.272448 0.2209246,0.493648 0.4932351,0.493648 0.2723133,0 0.4941973,-0.22072 0.4941973,-0.493648 v -2.05707 c 0,-0.272038 -0.221541,-0.493578 -0.4941973,-0.493578 z M 4.5278369,14.233712 2.7593423,16.002203 c -0.19284,0.192839 -0.19284,0.505537 0,0.697559 0.096626,0.09648 0.223249,0.144868 0.3495974,0.144868 0.126556,0 0.252154,-0.04798 0.34878,-0.144868 l 1.7685616,-1.768495 c 0.1928401,-0.192839 0.1928401,-0.505537 0,-0.697555 -0.1929071,-0.192433 -0.5056075,-0.192433 -0.6984444,0 z m 11.3110471,0 c -0.192841,-0.192433 -0.50513,-0.192433 -0.69797,0 -0.19284,0.192839 -0.19284,0.504716 0,0.697555 l 1.768562,1.768495 c 0.09635,0.09648 0.22277,0.144868 0.349531,0.144868 0.126418,0 0.252015,-0.04798 0.348439,-0.144868 0.192839,-0.192839 0.192839,-0.50472 0,-0.697559 z M 3.2089821,9.8591481 c 0,-0.2730643 -0.2220198,-0.4936474 -0.4942635,-0.4936474 H 0.49323831 C 0.2205829,9.3655007 0,9.5860838 0,9.8591481 0,10.132008 0.22092451,10.352795 0.49323831,10.352795 H 2.714789 c 0.2726523,-6.8e-5 0.4941931,-0.220787 0.4941931,-0.4936469 z M 19.497437,9.3655007 h -2.632718 c -0.272452,0 -0.493238,0.2205831 -0.493238,0.4936474 0,0.2728599 0.220719,0.4936469 0.493238,0.4936469 h 2.632718 c 0.272449,0 0.493648,-0.220721 0.493648,-0.4936469 0,-0.2731312 -0.221132,-0.4936474 -0.493648,-0.4936474 z"
+                            id="path1" style="stroke-width:0.0683343"></path>
+                    </svg>
+                    <svg class="theme-toggle-dark-icon w-5 h-5 icon-transition" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+            </div>
+
         </nav>
     </header>
     <section class="hero">
@@ -190,7 +222,7 @@
             </div>
             <div id="kanan-info"
                 class="w-full md:w-2/3 lg:w-4/6 relative z-10 h-full min-h-0 p-4 mx-auto flex flex-col justify-between">
-                <div id="daftar-suku" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-2">
+                <div id="daftar-suku" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4">
                     <div id="box-toba" suku-batak="toba" class="cabang-batak lg:col-span-4">
                         <img src="img/suku-toba.png" class="mx-auto max-h-[200px] object-contain">
                         <h2 class="font-extrabold md:text-[clamp(0.75rem,1.5vw,1.125rem)] mt-1 leading-tight">Toba</h2>
