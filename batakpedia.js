@@ -38,6 +38,13 @@ themeToggleBtn.forEach(btn => {
     });
 });
 
+//if user switched to dark mode, will stay dark mode until user manually switched back to light mode
+if (localStorage.getItem('theme') == 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+} else {
+    document.documentElement.classList.remove('dark');
+}
+
 //navbar
 const navbar = document.getElementById('navbar');
 const navMenu = document.getElementById('nav-menu');
@@ -137,6 +144,57 @@ cabangBatak.forEach(cabang => {
     });
     cabang.addEventListener('mouseleave', deactivateAll);
 });
+
+// hero background image slider
+const bgImages = [
+    'img/hero1.png',
+    'img/hero2.png',
+    'img/hero3.png',
+];
+
+function shuffleArray(array){
+    for (let i = array.length -1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]
+    }
+}
+
+shuffleArray(bgImages);
+
+let currentIndex = 0;
+let isLayerActive = true;
+
+const layerA = document.getElementById('bg-layer-a');
+const layerB = document.getElementById('bg-layer-b');
+
+layerA.style.backgroundImage = `url('${bgImages[0]}')`;
+
+function changeBg() {
+    currentIndex = (currentIndex + 1) % bgImages.length;
+    const nextImageUrl = bgImages[currentIndex];
+
+    if (isLayerActive) {
+        layerB.style.backgroundImage = `url('${nextImageUrl}')`;
+
+        layerB.classList.remove('opacity-0');
+        layerB.classList.add('opacity-100');
+
+        layerA.classList.remove('opacity-100');
+        layerA.classList.add('opacity-0');
+    } else {
+        layerA.style.backgroundImage = `url('${nextImageUrl}')`;
+
+        layerA.classList.remove('opacity-0');
+        layerA.classList.add('opacity-100');
+
+        layerB.classList.remove('opacity-100');
+        layerB.classList.add('opacity-0');
+    }
+}
+
+setInterval(changeBg, 6000);
+
+updateNavbarStyles();
 
 //ganti suku sesuai map
 const database = {

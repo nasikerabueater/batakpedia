@@ -1,9 +1,26 @@
-body {
-  color: #1b242d;
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.05);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
 }
 
 a:hover {
   color: #4f5e6d;
+}
+
+nav {
+  transition: transform 0.4s,
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s;
 }
 
 .wilayah-batak path {
@@ -24,10 +41,6 @@ a:hover {
   transition-duration: 300ms;
 }
 
-.cabang-batak:hover {
-  background-color: #fde401;
-}
-
 .cabang-batak,
 .suku-batak {
   transition: background-color 0.3s ease;
@@ -37,5 +50,5 @@ a:hover {
 .cabang-batak.is-active,
 .suku-batak:hover,
 .suku-batak.is-active {
-  background-color: #fde401;
+  background-color: #fde401 !important;
 }
